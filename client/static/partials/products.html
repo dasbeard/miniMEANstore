@@ -1,0 +1,53 @@
+<!-- <h1>Products</h1> -->
+<div class="left">
+
+  <label>Filter Products</label>
+  <input class='filter' type="text" ng-model="filter_name" placeholder="filter by name">
+
+  <h3 class="newProduct-label">Add a new product</h3>
+
+  <label>Name: </label>
+  <input type="text" ng-model="newProduct.name">
+  <label>Image (url): </label>
+  <input type="text" ng-model='newProduct.image' placeholder="http://">
+  <label>Description: </label>
+  <textarea ng-model='newProduct.description'></textarea>
+  <label>Initial Quantity: </label>
+
+  <select ng-model="newProduct.quantity" >
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+  <button type='buttom' class='newProduct-BTN' ng-click='addNewProduct()'>Add Product</button>
+
+</div> <!-- End Left Div -->
+
+<div class="products-right">
+  <div class='product' ng-repeat='product in products | filter: filter_name | limitTo : 10'>
+      <img src="{{product.image}}" alt="">
+      <p>{{product.name}}</p>
+      <p >( {{product.quantity}} left in stock)</p>
+  </div>
+
+</div>
+
+
+
+<a href='' class="products-showMore" ng-hide='showMore' ng-click='showMore=true'>show more..</a>
+
+<div class="products-right-bottom" ng-show='showMore'>
+  <div class='product' ng-repeat='product in products | filter: filter_name | limitTo: 1000 : 10'>
+      <img src="{{product.image}}" alt="">
+      <p>{{product.name}}</p>
+      <p >( {{product.quantity}} left in stock)</p>
+  </div>
+
+</div>

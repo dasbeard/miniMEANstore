@@ -1,0 +1,194 @@
+/*============================ Global Settings ============================*/
+*{
+  background-color: silver;
+}
+
+header{
+  /*outline: 1px solid blue;*/
+  width: 95%;
+  margin: 15px auto;
+}
+  header a{
+    margin: 7%;
+    text-decoration: none;
+  }
+
+
+
+/*=================================================================
+============================ Customers ============================
+=================================================================*/
+.errors h1{
+  width: 80%;
+  color: red;
+  font-weight: bolder;
+  text-align: center;
+  margin: auto;
+  text-decoration: underline;
+}
+
+.addCustomer{
+  /*outline: 1px solid blue;*/
+  display: inline-block;
+  vertical-align: bottom;
+  width: 30%;
+  margin-bottom: 25px;
+  margin-left: 10%;
+  padding-left: 25px;
+  padding-bottom: 5px;
+}
+  .addCustomer .addBTN{
+    background-color: blue;
+    color: white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+.filterCustomers{
+  display: inline-block;
+  vertical-align: bottom;;
+  margin-left: 15%;
+  margin-bottom: 10px;
+}
+
+.allCustomers{
+  outline: 1px solid black;
+  width: 80%;
+  margin: auto;
+  padding: 2px;
+}
+  .allCustomers th{
+    /*outline: 1px solid black;*/
+    width: 8%;
+    text-align: left;
+  }
+  .allCustomers td{
+  border-top: 1px solid black;
+  }
+
+
+  /*=================================================================
+  ============================ Products =============================
+  =================================================================*/
+.left{
+  /*outline: 1px solid blue;*/
+  width: 200px;
+  display: inline-block;
+  vertical-align: top;
+  height: 450px;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+  .left h3{
+    margin-bottom: 8px;
+    text-decoration: underline;
+    padding-left: 8px;
+  }
+
+  .left label, .left input, .left textarea, .left select{
+    display: block;
+    margin-bottom: 10px;
+    width: 80%;
+  }
+  .left .newProduct-BTN{
+    margin-left: 40px;
+  }
+
+.products-right, .products-right-bottom{
+  /*outline: 1px solid red;*/
+  display: inline-block;
+  vertical-align: top;
+  width: 75%;
+  margin-left: 40px;
+  height: 450px;
+  overflow: hidden;
+}
+  .products-right-bottom{
+    margin-left: 260px;
+  }
+.products-showMore{
+  margin: 0;
+  padding: 0;
+}
+
+
+.product{
+  /*outline: 1px solid green;*/
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+  width: 150px;
+  height: 175px;
+  padding: 10px;
+}
+  .product img{
+    /*outline: 1px solid black;*/
+    width: 120px;
+    height: 120px;
+    margin-left: 15px;
+    margin-top: 5px;
+  }
+  .product  p{
+    margin: 5px;
+    text-align: center;
+  }
+
+.products-showMore{
+  margin-left: 45%;
+}
+
+
+  /*=================================================================
+  ============================ Dashboard ============================
+  =================================================================*/
+.dashboard-left{
+  /*outline: 1px solid black;*/
+  display: inline-block;
+  vertical-align: top;
+  width: 175px;
+  margin-left: 45px;
+  margin-top: 15px;
+
+}
+.dashboard-container{
+  outline: 1px solid red;
+  display: inline-block;
+  width: 70%;
+  /*margin-left: 15px;*/
+  padding: 10px;
+
+}
+
+.someProducts{
+  outline: 1px solid blue;
+  width: 95%;
+  margin-left: 2.5%;
+  margin-bottom: 25px;
+  /*height: 25px;*/
+}
+  .someProducts .product {
+    margin-left: 3.5%;
+
+  }
+
+.recent-orders{
+  outline: 1px solid green;
+  width: 90%;
+  margin-left: 4%;
+  margin-bottom: 25px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.new-customers{
+  outline: 1px solid cyan;
+  width: 90%;
+  margin-left: 4%;
+  margin-bottom: 25px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+
+}

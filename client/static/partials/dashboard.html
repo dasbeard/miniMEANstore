@@ -1,0 +1,39 @@
+
+
+<div class="dashboard-left">
+  <input type="text" ng-model='filter_name' placeholder="  search...">
+</div>
+
+<div class="dashboard-container">
+  <div class="someProducts">
+    <div class='product' ng-repeat='product in products | filter: filter_name | limitTo : 4'>
+        <img src="{{product.image}}" alt="">
+        <p>{{product.name}}</p>
+        <p >( {{product.quantity}} left in stock)</p>
+    </div>
+
+    <a href='' class="products-showMore" ng-hide='showMore' ng-click='showMore=true'>show more..</a>
+      <div class='product ' ng-show='showMore' ng-repeat='product in products | filter: filter_name | limitTo : 25 : 4'>
+          <img src="{{product.image}}" alt="">
+          <p>{{product.name}}</p>
+          <p >( {{product.quantity}} left in stock)</p>
+      </div>
+
+  </div>
+
+
+  <div class="recent-orders">
+    <h3>Recent Orders</h3>
+    <p>"Name" purchased "2" "Product" ( "3 hours ago" )</p>
+    <p>"Name" purchased "2" "Product" ( "3 hours ago" )</p>
+    <p>"Name" purchased "2" "Product" ( "3 hours ago" )</p>
+
+  </div>
+
+  <div class="new-customers">
+    <h3>New Customers</h3>
+    <p ng-repeat='user in customers | filter: filter_name | limitTo: 3 '> {{user.name}} joined the store on {{user.createdAt | date: 'MMM d, yyyy'}}</p>
+
+  </div>
+
+</div>

@@ -1,0 +1,26 @@
+<div class="">
+
+  <h3>Add a new order</h3>
+  <label>Customer
+    <select ng-model='newOrder.customer' ng-options='user.name for user in customers'>
+    </select>
+  </label>
+
+<label>Order
+  <select ng-model="newOrder.quantity" >
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</label>
+
+  <label>Product
+    <select ng-model='newOrder.product' ng-options='product.name for product in products'>
+    </select>
+  </label>
+
+  <button ng-click='placeOrder()'>Order</button>
+
+</div>
