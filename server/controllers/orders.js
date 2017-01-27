@@ -13,39 +13,46 @@ module.exports = (function(){
       console.log('In the newOrder method  ----> order controler'. yellow);
       console.log(req.body);
 
-      //   // Add Product to database
-      // var product = new Product({name: req.body.name, image: req.body.image, description: req.body.description, quantity: req.body.quantity});
-      // console.log('product variable'.yellow);
-      // console.log(product);
-      // product.save(function(err){
-      //   if(err){
-      //     console.log('====== Error when Registering ======'.red);
-      //     res.json({error: 'Product name must be at least 2 characters long'})
-      //   } else {
-      //     console.log('====== Successfuly Added Product ======');
-      //     res.redirect('/products/all');
-      //   }
-      //     });
+      var order = new Order({_user: req.body.customer._id, _product: req.body.product._id, quantity: req.body.quantity});
+      console.log('order variable'.yellow);
+      console.log(order);
+
+      //Check if amount is in stock
+      Product.findOne({_id:req.body.product._id}, function(err, product){
+        console.log('=============== Finding Product ==============='.cyan);
+        if(err){
+          console.log('=============== Error Finding Product ==============='.red);
+          console.log(err);
+          res.json({error: 'Problem Finding Product'});
+        }
+        else if (product.quantity < req.body.quantity){
+            console.log('======= Requested too many products======='.red);
+            console.log(err);
+            res.json({error: 'We do not have that many in stock!'});
+        } else {
+          order.save(function(err){
+          // console.log('====== Successfuly Placed Order  ======');
+          product.quantity -= req.body.quantity;
+          // console.log(product.quantity);
+          product.save(function(err){
+            if(err){
+              console.log('===== Error Saving Product ====='.red);
+              res.json({error: 'Error updating store quantity'})
+            }
+            res.redirect('/orders/all');
+          }); //End Product Save
+        }); //End Order Save
+        }
+      });
+    },   // End New Order
 
 
 
-
-    },   // End New
-    //
-    // all: function(req,res){
-    //   Product.find({}, function(err, products){
-    //     if(err){
-    //       console.log('=============== Error Getting All Products ==============='.red);
-    //       console.log(err);
-    //       res.json({error: 'Problem getting all products'});
-    //     } else {
-    //       console.log('=============== All products ==============='.cyan);
-    //       console.log(products);
-    //       res.json(products);
-    //     }
-    //   });
-    // }, //End Get All
-
+    all: function(req,res){
+      Order.find({}).populate(['_user', '_product']).exec(function(err, orders){
+        res.json(orders);
+      })
+    }, //End Get All
 
 
   }

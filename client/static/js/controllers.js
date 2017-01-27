@@ -88,9 +88,11 @@ app.controller('productsController', function($scope, productsFactory, $location
 // =========================================================================
 // ========================= Dashboard Controller ==========================
 // =========================================================================
-app.controller('dashboardController', function($scope, productsFactory, customerFactory, $location){
+app.controller('dashboardController', function($scope, productsFactory, orderFactory, customerFactory, $location){
   $scope.product= [];
   $scope.customers = [];
+  $scope.orders = [];
+
 
   productsFactory.getAllProducts(function(output){
     $scope.products = output;
@@ -103,6 +105,10 @@ app.controller('dashboardController', function($scope, productsFactory, customer
     console.log(output);
   }) // End Get All Customers
 
+  orderFactory.getAllOrders(function(output){
+    $scope.orders = output;
+    console.log(output);
+  }) // End Get All Products
 
 
 }); //End of Dashboard Controller
@@ -112,11 +118,11 @@ app.controller('dashboardController', function($scope, productsFactory, customer
 // =========================================================================
 // ========================== Orders Controller ============================
 // =========================================================================
-app.controller('ordersController', function($scope, productsFactory, customerFactory, $location){
+app.controller('ordersController', function($scope, orderFactory, productsFactory, customerFactory, $location){
   $scope.products= [];
   $scope.customers = [];
   $scope.orders = [];
-
+  $scope.test=true;
 
   customerFactory.getAllCustomers(function(output){
     $scope.customers = output;
@@ -135,10 +141,21 @@ app.controller('ordersController', function($scope, productsFactory, customerFac
     console.log('========== Add new Product Button Clicked =========');
     console.log($scope.newOrder);
 
-  }
+    orderFactory.placeNewOrder($scope.newOrder, function(output){
+      console.log('Back from factory');
+      $scope.orders = output;
+      if(output.error){
+        $scope.error = output.error;
+      }
+    })
+      $scope.newOrder = {};
+  } // End Place Order
 
 
-
+  orderFactory.getAllOrders(function(output){
+    $scope.orders = output;
+    console.log(output);
+  }) // End Get All Products
 
 
 
@@ -160,4 +177,4 @@ app.controller('ordersController', function($scope, productsFactory, customerFac
 
 
 
-}) //End Order Controller
+}); //End Order Controller

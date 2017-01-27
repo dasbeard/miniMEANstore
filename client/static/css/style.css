@@ -65,6 +65,8 @@ header{
   }
   .allCustomers td{
   border-top: 1px solid black;
+  padding-top: 5px;
+
   }
 
 
@@ -152,7 +154,7 @@ header{
 
 }
 .dashboard-container{
-  outline: 1px solid red;
+  /*outline: 1px solid red;*/
   display: inline-block;
   width: 70%;
   /*margin-left: 15px;*/
@@ -161,7 +163,7 @@ header{
 }
 
 .someProducts{
-  outline: 1px solid blue;
+  /*outline: 1px solid blue;*/
   width: 95%;
   margin-left: 2.5%;
   margin-bottom: 25px;
@@ -173,7 +175,7 @@ header{
   }
 
 .recent-orders{
-  outline: 1px solid green;
+  /*outline: 1px solid green;*/
   width: 90%;
   margin-left: 4%;
   margin-bottom: 25px;
@@ -183,12 +185,52 @@ header{
 }
 
 .new-customers{
-  outline: 1px solid cyan;
+  /*outline: 1px solid cyan;*/
   width: 90%;
   margin-left: 4%;
   margin-bottom: 25px;
   padding-left: 15px;
   padding-bottom: 5px;
   padding-top: 5px;
+}
+
+
+
+
+/*=================================================================
+============================ Orders ============================
+=================================================================*/
+.ordersContainer{
+  /*outline: 1px solid red;*/
+  /*display: block;*/
+  width: 75%;
+  margin: 0 auto 25px;
 
 }
+
+.newOrderDiv{
+  /*outline: 1px solid green;*/
+  display: inline-block;
+}
+
+.orders-filter{
+  /*outline: 1px solid cyan;*/
+  display: inline-block;
+  margin-left: 25%;
+}
+
+
+.prevOrders{
+  outline: 1px solid black;
+  width: 80%;
+  margin: auto;
+  padding: 2px;
+}
+  .prevOrders th{
+    width: 8%;
+    text-align: left;
+  }
+  .prevOrders td{
+    border-top: 1px solid black;
+    padding-top: 5px;
+  }

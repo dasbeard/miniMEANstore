@@ -3,6 +3,8 @@
 // =========================================================================
 var users = require('./../controllers/users.js');
 var products = require('./../controllers/products.js');
+var orders = require('./../controllers/orders.js');
+
 
 module.exports = function(app){
 // =========================================================================
@@ -31,6 +33,22 @@ module.exports = function(app){
   app.post('/products/new', function(req,res){
     products.addProduct(req,res);
   });
+
+
+
+// =========================================================================
+// ============================ Orders Routes ==============================
+// =========================================================================
+  app.post('/orders/new', function (req,res){
+    console.log(req.body);
+    orders.newOrder(req,res)
+  });
+
+  app.get('/orders/all', function(req,res){
+    orders.all(req,res)
+  });
+
+
 
 
 }; // End Routes

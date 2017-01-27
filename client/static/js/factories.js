@@ -63,3 +63,35 @@ factory.addNewProduct = function(input, callback){
 return factory;
 
 }); // End Message Factory
+
+
+// =========================================================================
+// =========================== Orders Factory ============================
+// =========================================================================
+app.factory('orderFactory', function ($http){
+  var factory = {};
+
+  var user = {};
+
+  //Register method
+  factory.placeNewOrder = function(input, callback){
+    console.log('At factory');
+    $http.post('/orders/new', input).then(function(output){
+      console.log('Made it back to factory');
+      callback(output.data);
+    });
+  }
+
+
+  factory.getAllOrders = function(callback){
+    $http.get('/orders/all').then(function(output){
+      console.log('Got all Orders');
+      callback(output.data);
+    });
+  }
+
+
+
+  return factory;
+
+}); //End Order Factory

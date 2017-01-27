@@ -1,7 +1,7 @@
 
 
 <div class="dashboard-left">
-  <input type="text" ng-model='filter_name' placeholder="  search...">
+  <input type="text" ng-model='filter_name' placeholder="  search..." focus-if>
 </div>
 
 <div class="dashboard-container">
@@ -12,8 +12,8 @@
         <p >( {{product.quantity}} left in stock)</p>
     </div>
 
-    <a href='' class="products-showMore" ng-hide='showMore' ng-click='showMore=true'>show more..</a>
-      <div class='product ' ng-show='showMore' ng-repeat='product in products | filter: filter_name | limitTo : 25 : 4'>
+    <a href='' class="products-showMore" ng-hide='showMoreProducts' ng-click='showMoreProducts=true'>show more..</a>
+      <div class='product ' ng-show='showMoreProducts' ng-repeat='product in products | filter: filter_name | limitTo : 25 : 4'>
           <img src="{{product.image}}" alt="">
           <p>{{product.name}}</p>
           <p >( {{product.quantity}} left in stock)</p>
@@ -24,15 +24,28 @@
 
   <div class="recent-orders">
     <h3>Recent Orders</h3>
-    <p>"Name" purchased "2" "Product" ( "3 hours ago" )</p>
-    <p>"Name" purchased "2" "Product" ( "3 hours ago" )</p>
-    <p>"Name" purchased "2" "Product" ( "3 hours ago" )</p>
+    <p ng-repeat='order in orders | filter: filter_name | limitTo: 3'>
+      {{order._user.name}} ordered {{order.quantity}} {{order._product.name}} on {{order.createdAt | date: 'MMM d, yyyy'}}
+    </p>
+
+    <a href='' class="recent-orders" ng-hide='showMoreOrders' ng-click='showMoreOrders=true'>show more..</a>
+
+    <p ng-show='showMoreOrders' ng-repeat='order in orders | filter: filter_name | limitTo: 25 : 3'>
+      {{order._user.name}} ordered {{order.quantity}} {{order._product.name}} on {{order.createdAt | date: 'MMM d, yyyy'}}
+    </p>
 
   </div>
 
   <div class="new-customers">
     <h3>New Customers</h3>
-    <p ng-repeat='user in customers | filter: filter_name | limitTo: 3 '> {{user.name}} joined the store on {{user.createdAt | date: 'MMM d, yyyy'}}</p>
+    <p ng-repeat='user in customers | filter: filter_name | limitTo: 3 '> {{user.name}} joined the store on {{user.createdAt | date: 'MMM d, yyyy'}}
+    </p>
+
+    <a href='' class="recent-orders" ng-hide='showMoreCustomers' ng-click='showMoreCustomers=true'>show more..</a>
+
+    <p ng-show='showMoreCustomers' ng-repeat='user in customers | filter: filter_name | limitTo: 3 '> {{user.name}} joined the store on {{user.createdAt | date: 'MMM d, yyyy'}}
+    </p>
+
 
   </div>
 

@@ -1,5 +1,5 @@
 //==================== Creating Angular App ====================
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'focus-if']);
 
 //==================== Angular Routes ====================
 app.config(function($routeProvider){
